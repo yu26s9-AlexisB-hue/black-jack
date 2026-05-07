@@ -47,7 +47,11 @@ public class Main {
             System.out.println(c2.getSuit());
             System.out.println(c2.getValue());
             c2.flip();
+
+            hitOrStay(hands[i],deck, scanner, playerNames[i]);
+
         }
+
 
         int winningScore = 0;
         String winner = "";
@@ -72,6 +76,43 @@ public class Main {
     }
     private static void displayGameTitle(){
         System.out.println("--Black Jack--");
+    }
+
+    private static void hitOrStay(Hand hands, Deck deck, Scanner scanner,String playerName){
+
+        boolean playing = true;
+
+        while (playing){
+
+            System.out.println(playerName + " has " + hands.getValue() + " point!");
+            if (hands.getValue() > 21){
+                System.out.println(playerName + " Bust ");
+                break;
+            }
+
+            System.out.println("Hit or Stay? ");
+            String choice = scanner.nextLine();
+
+            if (choice.equalsIgnoreCase("hit")){
+                Cards c = deck.dealFrom();
+
+                hands.dealInto(c);
+
+                c.flip();
+                System.out.println(c.getSuit());
+                System.out.println(c.getValue());
+                c.flip();
+
+            }else if (choice.equalsIgnoreCase("stay")){
+
+                playing = false;
+
+            }else{
+                System.out.println("Invalid entry!");
+            }
+
+        }
+
     }
 
 }
