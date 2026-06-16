@@ -66,10 +66,6 @@ public class Main {
             if(currentScore > winningScore && currentScore <= 21){
                 winningScore = currentScore;
                 winner = playerNames[i];
-            }else if (currentScore == currentScore && winningScore <= 21){
-                System.out.println("Tie!");
-            }else{
-                System.out.println("Invalid entry");
             }
 
         }
